@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Banco de Alimentos</title>
+    <link href="/estatico/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/estatico/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/estatico/css/main.css" rel="stylesheet">
+	<link href="/estatico/css/animate.css" rel="stylesheet">	
+	<link href="/estatico/css/responsive.css" rel="stylesheet">
+	<link rel="shortcut icon" href="/estatico/images/ico/apple.png">
+
+    <!--[if lt IE 9]>
+	    <script src="/estatico/js/html5shiv.js"></script>
+	    <script src="/estatico/js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="/estatico/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/estatico/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/estatico/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/estatico/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/estatico/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+	<header id="header" role="banner">		
+		<div class="main-nav">
+			<div class="container">
+				<div class="header-top">
+					<div class="pull-right social-icons">
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-google-plus"></i></a>
+						<a href="#"><i class="fa fa-youtube"></i></a>
+					</div>
+				</div>     
+		        <div class="row">	        		
+		            <div class="navbar-header">
+		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		                    <span class="sr-only">Toggle navigation</span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                </button>
+		                <a class="navbar-brand" href="index.html">
+		                	<img class="img-responsive" src="/estatico/images/logo_trans.png" alt="logo">
+		                </a>                    
+		            </div>
+		            <div class="collapse navbar-collapse">
+		                <ul class="nav navbar-nav navbar-right">                 
+		                    <li class="scroll active"><a href="#home">Inicio</a></li>
+		                    <li class="scroll"><a href="#explore">Productos</a></li>                         
+		                    <li class="scroll"><a href="#event">Servicios</a></li>
+		                    <!--<li class="scroll"><a href="#about">Acerca de..</a></li>  -->                   
+		                    <!-- <li class="no-scroll"><a href="#twitter">Twitter</a></li> -->
+		                    <li><a class="no-scroll"  href="#explore">Logros</a></li>
+		                    <li class="scroll"><a href="#contact">Contacto</a></li>
+		                    <li class="scroll"><a href="#ventana" data-toggle="modal">Login</a></li>
+
+
+									<div class="modal fade" id="ventana" tabindex="-1" role="dialog">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									      <center>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										        <h4 class="modal-title">Modal title</h4>
+										      </div>
+										      <div class="modal-body">
+										        <p>One fine body&hellip;</p>
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										        <button type="button" class="btn btn-primary">Save changes</button>
+										      </div>
+									      </center>
+									    </div><!-- /.modal-content -->
+									  </div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		                    <!--<li class="scroll"><a href="#ventana1" class="btn btn-primary btn-lg" data-toggle="modal">Login	</a></li> 
+
+								<div class="modal-fade" id="ventana1">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h2 class="modal-title">Bienvenido</h2>
+											</div>
+
+
+								<!--header de contenido
+	                                    <div class="modal-body">
+	                                    <textarea class="form-control" rows="3" title="Ejemplo: (lada) Número Celular o de Casa(Opcional)"></textarea>
+	                                        <p>Introduce tu Número de Teléfono</p>
+	                                    </div>
+
+	                                    <!--Fotter de la ventana
+	                                    <div class="modal-footer">
+	                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	                                        <button type="button" class="btn btn-primary">Registrar</button>
+	                                    </div>     
+
+
+										</div>
+									</div>
+
+								</div>-->
+
+							
+
+
+
+
+
+
+		                </ul>
+		            </div>
+		        </div>
+	        </div>
+        </div>                    
+    </header>
+    <!--/#header--> 
+
+    <section id="home">	
+		<div id="main-slider" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#main-slider" data-slide-to="0" class="active"></li>
+				<li data-target="#main-slider" data-slide-to="1"></li>
+				<li data-target="#main-slider" data-slide-to="2"></li>
+				<li data-target="#main-slider" data-slide-to="3"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img class="img-responsive" src="/estatico/images/slider/eat.jpg" alt="slider">						
+					<div class="carousel-caption">
+						<h2>Morelos sin Hambre </h2>
+						<h4>Por una razón sociable</h4>
+						<a href="#">Informate como<i class="fa fa-angle-right"></i></a>
+					</div>
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="/estatico/images/slider/fruits.jpg" alt="slider">	
+					<div class="carousel-caption">
+						<h2></h2>
+						<h4>Aceptación de todo tipo de Apoyo </h4>
+						<a href="#">Todo Tipo de Alimentos<i class="fa fa-angle-right"></i></a>
+					</div>
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="/estatico/images/slider/fruit.jpg" alt="slider">	
+					<div class="carousel-caption">
+						<h2>Yo Quiero Colaborar</h2>
+						<h4>Donadores | Asociaciones | Trasporte | Puntos </h4>
+						<a href="#" >Consulta las Bases<i class="fa fa-angle-right"></i></a>
+					</div>
+				</div>		
+
+
+				<div class="item">
+					<img class="img-responsive" src="/estatico/images/slider/comedores-3.jpg" alt="slider">	
+					<div class="carousel-caption">
+						<h2>Benficiamos a 1.2 Millones de Mexicanos</h2>
+						<h4></h4>
+						<a href="#" >Puntos de Encuentro<i class="fa fa-angle-right"></i></a>
+					</div>
+				</div>		
+
+
+
+
+			</div>
+		</div>    	
+    </section>
+	<!--/#home-->
+
+	<section id="explore">
+		<div class="container">
+			<div class="row">
+				<div class="watch">
+					<img class="img-responsive" src="/estatico/images/banner-fruit.jpg" alt="">
+				</div>				
+				<div class="col-md-4 col-md-offset-2 col-sm-5">
+					<h2> <font color="white" size="30">No lo Pienses Más</font></h2>
+					<h4><font color="black" size="10"><b>Este Año Vamos por los 2 Millones de Morelenses</b></font></h4>
+				</div>				
+				<div class="col-sm-7 col-md-6">				
+					<ul id="countdown">
+						<li>					
+							<span class="days time-font">00</span>
+							<p>Dias</p>
+						</li>
+						<li>
+							<span class="hours time-font">00</span>
+							<p class="">Horas </p>
+						</li>
+						<li>
+							<span class="minutes time-font">00</span>
+							<p class="">Minutos</p>
+						</li>
+						<li>
+							<span class="seconds time-font">00</span>
+							<p class="">Segundos</p>
+						</li>				
+					</ul>
+				</div>
+			</div>
+			<div class="cart">
+				<a href="#"><i class="fa fa-shopping-cart"></i> <span>Store</span></a>
+			</div>
+		</div>
+	</section><!--/#explore-->
+
+	<section id="event">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-9">
+					<div id="event-carousel" class="carousel slide" data-interval="false">
+						<h2 class="heading">Sabías Que?</h2>
+						<a class="even-control-left" href="#event-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+						<a class="even-control-right" href="#event-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="single-event">
+											<img class="img-responsive" src="/estatico/images/event/comida1.jpg" alt="event-image">
+											<h4>Comida</h4>
+											<h5>Con un solo producto tu Apoyas a un Familia</h5>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="single-event">
+											<img class="img-responsive" src="/estatico/images/event/niña.jpg" alt="event-image">
+											<h4>Niños</h4>
+											<h5>Más de un 20% de Niños Sufre de desnutrición en diferentes Niveles </h5>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="single-event">
+											<img class="img-responsive" src="/estatico/images/event/vestido.jpg" alt="event-image">
+											<h4>Cultura</h4>
+											<h5>Ayudamos a la Preservación de Nuetras Raices</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="item">
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="single-event">
+											<img class="img-responsive" src="/estatico/images/event/trato2.jpg" alt="event-image">
+											<h4>Asociaciones</h4>
+											<h5>Cada vez Mas Empresas se Unen a Esta Causa Social</h5>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="single-event">
+											<img class="img-responsive" src="/estatico/images/event/gigante.jpg" alt="event-image">
+											<h4>Puntos</h4>
+											<h5>Zonas Populares de Encuentro</h5>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="single-event">
+											<img class="img-responsive" src="/estatico/images/event/one.jpg" alt="event-image">
+											<h4>Calidad</h4>
+											<h5>Todos los productos son Rigurosamente Verificados</h5>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bamx">
+					<img class="img-responsive" src="/estatico/images/logo-der.png" alt="olla">
+				</div>
+			</div>			
+		</div>
+	</section><!--/#event-->
+
+	
+	<!-- <section id="twitter">
+		<div id="twitter-feed" class="carousel slide" data-interval="false">
+			<div class="twit">
+				<img class="img-responsive" src="/estatico/images/twit.png" alt="twit">
+			</div>
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="text-center carousel-inner center-block">
+						<div class="item active">
+							<img src="/estatico/images/twitter/twitter1.png" alt="">
+							<p>Sigue las distintas paginas de turismo en Morelos </p>
+							<a href="#">Comparte tus experencias y Aventuras</a>
+						</div>
+						<div class="item">
+							<img src="/estatico/images/twitter/twitter2.png" alt="">
+							<p>Vive, Crea y comparte muchas zonas</p>
+							<a href="#">Visita @MorelosTurismo</a>
+						</div>
+						<div class="item">
+							<img src="/estatico/images/twitter/twitter3.png" alt="">
+							<p>Ayuda a crecer a Morelos</p>
+							<a href="#">Visitar es ganar</a>
+						</div>
+					</div>
+					<a class="twitter-control-left" href="#twitter-feed" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+					<a class="twitter-control-right" href="#twitter-feed" data-slide="next"><i class="fa fa-angle-right"></i></a>
+				</div>
+			</div>
+		</div>		
+	</section> --><!--/#twitter-feed-->
+	
+<!--
+texto de reserva
+-->
+
+	<section id="contact">
+		<!--<div id="map">
+			<div id="gmap-wrap">
+	 			<div id="gmap"> 				
+	 			</div>	 			
+	    	</div>
+		</div><!--/#map-->
+		<div class="contact-section">
+			<div class="ear-piece">
+				<img class="img-responsive" src="/estatico/images/ear-piece1.png" alt="">
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3 col-sm-offset-4">
+						<div class="contact-text">
+							<h3>Contacto</h3>
+							<address>
+								E-mail: brocode@code.com<br>
+								Telefono: +52 (735) 15257<br>
+							</address>
+						</div>
+						<div class="contact-address">
+							<h3>Contact0</h3>
+							<address>
+								Av. Calle de calle<br>
+								Cuautla Morelos,<br>
+								ITC<br>
+								Mexico
+							</address>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<div id="contact-section">
+							<h3>Envia Un Mensaje</h3>
+					    	<div class="status alert alert-success" style="display: none"></div>
+					    	<form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+					            <div class="form-group">
+					                <input type="text" name="name" class="form-control" required="required" placeholder="Nombre Completo">
+					            </div>
+					            <div class="form-group">
+					                <input type="email" name="email" class="form-control" required="required" placeholder="Email ">
+					            </div>
+					            <div class="form-group">
+					                <textarea name="message" id="message" required="required" class="form-control" rows="4" placeholder="Mensaje"></textarea>
+					            </div>                        
+					            <div class="form-group">
+					                <button type="submit" class="btn btn-primary pull-right">Send</button>
+					            </div>
+					        </form>	       
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</section>
+    <!--/#contact-->
+
+    <footer id="footer">
+        <div class="container">
+            <div class="text-center">
+                <p> Copyright  &copy;2016<a target="_blank" href="#"> Morelos Turismo </a>Todos los Derechos Reservados. <br> Elaborado por <a target="_blank" href="#">BroCode</a></p>                
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+  
+    <script type="text/javascript" src="/estatico/js/jquery.js"></script>
+    <script type="text/javascript" src="/estatico/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  	<script type="text/javascript" src="/estatico/js/gmaps.js"></script>
+	<script type="text/javascript" src="/estatico/js/smoothscroll.js"></script>
+    <script type="text/javascript" src="/estatico/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="/estatico/js/coundown-timer.js"></script>
+    <script type="text/javascript" src="/estatico/js/jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="/estatico/js/jquery.nav.js"></script>
+    <script type="text/javascript" src="/estatico/js/main.js"></script>  
+</body>
+</html>
