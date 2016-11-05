@@ -1,57 +1,57 @@
-var express = require('express');
-var http = require('http');
-var io = require('socket.io');
+var express=require("express");//crear servidor express
+var app=express();//eje   cutar el servidor express
+var server=require("http").Server(app);//crear servidor con http y pasarle la aplicacion express
+var io=require("socket.io")(server);//servidor de sockets
+
 //******tablas*****
 //checar el nombre de la tabla y la ubicacion
 var solicitudvoluntario=require("./modelos/modelo1").solicitud_voluntario;
-var solicitudcomedor=require("./modelos/modelo1").solicitud_comedor;
-var solicitudcentro=require("./modelos/modelo1").solicitud_centro;
 
+var solicitud_c=require("./modelos/modelo1").solicitud_centro;
 
-//*******************+
-var app = express();
-var server = http.createServer(app);
-io = io.listen(server);
-var connections = 0;
-
-app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 app.use("/estatico",express.static('public'));
 
-var messages = [{
-	id:1,
-	text:"Hola soy un mensaaje",
-	author: "Soy daniel"
-}]
+var misocket; //socket = misocket.so
 
-io.on('connection',function (socket) {
-	console.log("se conectaron con sockets");
-	socket.emit('messages',messages);
-	socket.on('newmessage', function (data) {
-		messages.push(data);
-		io.sockets.emit('messages',messages);
-	});
+function sock(so)
+{
+  this.so=so;
+}
+
+io.on("connection",function(socket)//cuando reciba el mensaje connection del navegador ejecutara la funcion
+{
+  console.log("Alguien se ha conectado con sockets");
+  socket.emit("messages",messages);
+
+  socket.on("new-message", function(data)//funcion que se ejecuta al recibir el evento new-message
+  {
+    messages.push(data);//lo guardamos en el arreglo
+    io.sockets.emit("messages",messages);//se utiliza todo el servidor para envarle a todos los sockets el array actualizado
+   });
 });
 
 
 
-app.get("/solicitud_comedor",function(req,res)
+app.get("/solicitud_c",function(req,res)
 {
-  var sol_comedor=new solicitud_comedor(
+  var sol_c=new solicitud_c(
   {
     nombre_c:req.query.nombre_c,//nombre del comedor
-    ubicacion:req.query.ubicacion,//coordenadas
-    horario:req.query.horario,
-    direccion_c:req.query.direccion_c,
+    tipo:req.query.tipo,//centro=1/comedor=2
+    latitud:req.query.latitud,//coordenadas
+    longitud:req.query.longitud,
+    inicio:req.query.inicio,//abre
+    fin:req.query.fin,//cierra
     ///////////////////
     nombre:req.query.nombre,
     direccion:req.query.direccion,
     telefono:req.query.telefono,
-    email:req.query.email,
+    email:req.query.email,//no requerido
     estado:false
   });
-
-  sol_comedor.save().then(function(us)//guardamos en la base de datos
+  console.log(JSON.stringify(req.query));
+  sol_c.save().then(function(us)//guardamos en la base de datos
   {
   console.log("guardamos tus datos");
   },function(err)
@@ -59,9 +59,31 @@ app.get("/solicitud_comedor",function(req,res)
     if(err)
     {
       console.log(String(err));
-      console.log("no se pudo");
+      console.log("No se pudieron guardar tus datos");
     }
   });
+
+  solicitud_c.find(function (err,doc) {
+      // busca en el modelo
+		var cadena= JSON.stringify(doc)﻿;
+		var text="";
+		for (var a =0; a<cadena.length;a++){
+
+			if (cadena[a]=="\""){
+				text+="\"\t";
+			}else if(cadena[a]==","){
+				text+=",\n";
+			}else if (cadena[a]=="}"){
+				text+="}\n";
+			}else{
+				text+=cadena[a];
+			}
+		}
+    console.log(text);
+	});
+  var status=true;
+ res.header("Access-Control-Allow-Origin","*");
+ res.send({"ss":status});
 });
 
 app.get("/solicitud_centro",function(req,res)
@@ -158,22 +180,53 @@ app.get('/form', function(req, res){
   res.render('form1');
 });
 
-io.set('log level', 1);
+app.get("/rutas",function(req,res)
+{
+  var ruta =
+  {
+    inicio:{nombre_c:"cuautla",latitud:"12.927371",longitud:"12.1827",tipo:"1",},
+    fin:{nombre_c:"amayuca",latitud:"12.927371",longitud:"12.1827",tipo:"2"}
+  }
 
-io.sockets.on('connection', function (socket) {
-	connections++;
-  	console.log('connected',connections);
+  //////////////////////
+  //hacer la consulta de todas las rutas
+  solicitud_c.find({"estado":false},{"nombre_c":1,"tipo":1,"latitud":1,"longitud":1},function(err,doc)
+  {
+    res.header("Access-Control-Allow-Origin","*");
+    res.send(doc);
+  });
+});
 
-  	socket.emit('server', {connections:connections});
+app.get("/admin_solicitudes_centros",function(req,res)//solicitudes de comedores
+{
+  solicitud_c.find({"estado":false,"tipo":"1"},{"nombre_c":1,"tipo":1,"latitud":1,"longitud":1},function(err,doc)
+  {
+    res.header("Access-Control-Allow-Origin","*");
+    res.send(doc);
+  });
+});
 
-  	socket.on('disconnect', function() {
-  		connections--;
-    	console.log('Se desconecto',connections);
-  	});
+app.get("/admin_solicitudes_comedores",function(req,res)//solicitudes de centros de acopio
+{
+  solicitud_c.find({"estado":false,"tipo":"2"},{"nombre_c":1,"tipo":1,"latitud":1,"longitud":1},function(err,doc)
+  {
+    res.header("Access-Control-Allow-Origin","*");
+    res.send(doc);
+  });
+});
 
+app.get("/respuestas",function()
+{
+    // id:req.query.id //obtenemos el id del boton que eliga
+    // tipo:req.query.tipo
+    solicitud_c.remove({},{});
 });
 
 
-server.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+
+
+
+server.listen(3000,function()
+{
+    console.log("Servidor con sockets corriendo en puerto 3000");
 });

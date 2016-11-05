@@ -11,20 +11,26 @@ var voluntario= new Schema({
   estado:Boolean
 });
 
-  var comedor=new Schema({
-    ubicacion:{type:String},
-    horario:{type:String},
-    encargado:{type:String},
-    email:{type:String},
-    estado:Boolean
-    });
+  // var comedor=new Schema({
+  //   ubicacion:{type:String},
+  //   horario:{type:String},
+  //   encargado:{type:String},
+  //   email:{type:String},
+  //   estado:Boolean
+  //   });
 
     var centro =new Schema({
-    id:{type:String},
+    nombre_c:{type:String,require:true},//nombre del centro
+    tipo:{type:String},//comedor/centro
+    latitud:{type:String},
+    longitud:{type:String},
+    inicio:{type:String},
+    fin:{type:String},
+
     nombre:{type:String},
-    ubicacion:{type:String},
-    horario:{type:String},
-    encargado:{type:String},
+    direccion:{type:String},
+    telefono:{type:String},
+    email:{type:String},
     estado:Boolean
     });
 //creacion de las tablas
@@ -33,8 +39,8 @@ var solicitud_voluntario=mongoose.model("solicitud_voluntario",voluntario);//sol
 //exportaciones de las tablas
 module.exports.solicitud_voluntario=solicitud_voluntario;
 
-var solicitud_comedor=mongoose.model("solicitud_comedor",comedor);
-module.exports.solicitud_comedor=solicitud_comedor;//exportamos la tabla
-
 var solicitud_centro=mongoose.model("solicitud_centro",centro);
 module.exports.solicitud_centro=solicitud_centro;//exportamos la tabla
+
+// var solicitud_centro=mongoose.model("solicitud_centro",centro);
+// module.exports.solicitud_centro=solicitud_centro;//exportamos la tabla
