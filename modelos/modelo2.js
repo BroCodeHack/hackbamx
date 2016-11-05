@@ -1,7 +1,7 @@
 var mongoose=require("mongoose");
 var Schema=mongoose.Schema;
 
-
+//hola///
 
 var comedor=new Schema({
 
