@@ -1,7 +1,6 @@
 var express = require('express');
 var http = require('http');
 var io = require('socket.io');
-var bodyParser=require("body-parser");
 //******tablas*****
 //checar el nombre de la tabla y la ubicacion
 var solicitudvoluntario=require("./modelos/modelo1").solicitud_voluntario;

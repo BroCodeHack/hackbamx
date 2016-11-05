@@ -96,7 +96,7 @@
     right: 5%;
   }
 
-  .guitar, .ear-piece, .light {
+  .bamx, .ear-piece, .light {
     display: none;
   }
 
@@ -104,11 +104,11 @@
     left: -8%
   }
 
-  .guitar2 {
+  .bamx2 {
     height: 100%;
   }
 
-  .guitar2 img {
+  .bamx2 img {
     padding-top:38%;
   }
 

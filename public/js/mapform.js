@@ -44,7 +44,10 @@ function initMap(LatLng) {
         title: "Mi posición",
         animation: google.maps.Animation.DROP
         });
-      google.maps.event.addListener(markerpos, 'click', function() {openInfoWindow(markerpos);});    
+      google.maps.event.addListener(markerpos, 'click', function() {openInfoWindow(markerpos);});  
+      google.maps.event.addDomListener(window,'resize',initialize);
+      google.maps.event.addDomListener(window,'load',initialize);
+
 }
 
 

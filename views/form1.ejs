@@ -20,9 +20,13 @@
 
     
     <style type="text/css">
-    	#map {
-        height: 78%;
-        width: 95%;
+    	 html, body {
+        height: 50%;
+        margin: 0;             
+        padding: 0;
+      }
+      #map {
+      	height: 80vh;
       }
     </style>
 </head><!--/head-->
@@ -85,7 +89,7 @@
 
 
 
-
+map
 
 
 	
@@ -99,7 +103,7 @@
 
 					<div class="col-sm-5">
 						<div id="contact-section">
-							<center><h3>Bienvenido Colaborador</h3>
+							<h3>Bienvenido Colaborador</h3>
 					    	<div class="status alert alert-success" style="display: none"></div>
 					    	<form id="main-contact-form" class="contact-form" name="contact-form" method="post">
 					            <div class="form-group">
@@ -119,7 +123,7 @@
 					            </div>
 
 					            <div class="form-group1">
-									<select width="50" name="tip" multiple>
+									<select width="50" name="tip" >
 											<option value="">Donador</option>
 											<option value="">Repartidor</option>
 											<option value="">Expandir Comunidad</option>
@@ -131,20 +135,35 @@
 					            </div>
 
 					        </form>
-					   		<div id="map" align="center"></div>	       
+
+					   		
+
 					    </div>
-					    </center>
+					    
 					</div>
+					<div class="col-sm-7">
+						<br>
+						<br>
+						<br>
+						<div class="img-responsive" id="map" align="center"></div>
+					</div>
+					 
+
+				
+
 				</div>
 			</div>
 		</div>		
 	</section>
+	
+
     <!--/#contact-->
 
     <script type="text/javascript" src="/estatico/js/jquery-1.12.3.min.js"></script>
+
     <script type="text/javascript" src="/estatico/js/mapform.js"></script>
 	<script type="text/javascript" src ="/estatico/js/form.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVFkkhjKJsK4qS1MM0YkH5B0xx9DlLBYM&callback=initMap"
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCVFkkhjKJsK4qS1MM0YkH5B0xx9DlLBYM&callback=initMap"
 	        async defer></script>
 
 </body>
