@@ -5,8 +5,8 @@ var bodyParser=require("body-parser");
 //******tablas*****
 //checar el nombre de la tabla y la ubicacion
 var solicitudvoluntario=require("./modelos/modelo1").solicitud_voluntario;
-var solicitudcomedor=require("./modelos/modelo2").solicitud_comedor;
-var solicitudcentro=require("./modelos/modelo3").solicitud_centro;
+
+
 
 //*******************+
 var app = express();
