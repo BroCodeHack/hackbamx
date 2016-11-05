@@ -47,7 +47,8 @@ app.get("/solicitud_comedor",function(req,res)
     nombre:req.query.nombre,
     direccion:req.query.direccion,
     telefono:req.query.telefono,
-    email:req.query.email
+    email:req.query.email,
+    estado:false
   });
 
   sol_comedor.save().then(function(us)//guardamos en la base de datos
@@ -59,7 +60,6 @@ app.get("/solicitud_comedor",function(req,res)
     {
       console.log(String(err));
       console.log("no se pudo");
-
     }
   });
 });
@@ -76,7 +76,8 @@ app.get("/solicitud_centro",function(req,res)
     nombre:req.query.nombre,
     direccion:req.query.direccion,
     telefono:req.query.telefono,
-    email:req.query.email
+    email:req.query.email,
+    estado:false
   });
 
   console.log(JSON.stringify(req.query));
@@ -101,11 +102,12 @@ app.get("/solicitud_voluntario",function(req,res)
 {
   var sol_voluntario= new solicitudvoluntario(
   {
-    email:req.query.email,
     nombre:req.query.nombre,
     direccion:req.query.direccion,
     telefono:req.query.telefono,
-    tipo:req.query.tipo
+    email:req.query.email,
+    tipo:req.query.tipo,
+    estado:false
   });
 
   sol_voluntario.save().then(function(us)//guardamos en la base de datos
@@ -120,7 +122,7 @@ app.get("/solicitud_voluntario",function(req,res)
       }
     });
 
-  
+
 
   solicitudvoluntario.find(function (err,doc) {
       // busca en el modelo
@@ -138,6 +140,7 @@ app.get("/solicitud_voluntario",function(req,res)
 				text+=cadena[a];
 			}
 		}
+    console.log(text);
 	});
 
    var status=true;

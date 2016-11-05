@@ -6,15 +6,17 @@ var voluntario= new Schema({
   nombre:{type:String,require:true},
   direccion:{type:String, require:true},
   telefono:{type:String, require:true},
-  correo:{type:String, require:true},
-  tipo:{type:String,require:true}
-  });
+  email:{type:String, require:true},
+  tipo:{type:String,require:true},
+  estado:Boolean
+});
 
   var comedor=new Schema({
     ubicacion:{type:String},
     horario:{type:String},
     encargado:{type:String},
-    email:{type:String}
+    email:{type:String},
+    estado:Boolean
     });
 
     var centro =new Schema({
@@ -22,9 +24,8 @@ var voluntario= new Schema({
     nombre:{type:String},
     ubicacion:{type:String},
     horario:{type:String},
-    encargado:{type:String}
-
-
+    encargado:{type:String},
+    estado:Boolean
     });
 //creacion de las tablas
 
