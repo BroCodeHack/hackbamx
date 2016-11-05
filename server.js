@@ -4,9 +4,10 @@ var io = require('socket.io');
 var bodyParser=require("body-parser");
 //******tablas*****
 //checar el nombre de la tabla y la ubicacion
-// var solicitudvoluntario=require("./models/solicitudvoluntario").solicitudvoluntario;
-// var solicitudcentro=require("./models/solicitudcentro").solicitudcentro;
-// var solicitudcomedor=require("./models/solicitudcomedor").solicitudcomedor;
+var solicitudvoluntario=require("./modelos/modelo1").solicitud_voluntario;
+var solicitudcomedor=require("./modelos/modelo2").solicitud_comedor;
+var solicitudcentro=require("./modelos/modelo3").solicitud_centro;
+
 //*******************+
 var app = express();
 var server = http.createServer(app);
@@ -36,36 +37,41 @@ io.on('connection',function (socket) {
 
 app.get("/solicitud_comedor",function(req,res)
 {
-  var sol_comedor= //new solicitud_comedor(
+  var sol_comedor=new solicitud_comedor(
   {
     nombre_c:req.query.nombre_c,//nombre del comedor
     ubicacion:req.query.ubicacion,//coordenadas
     horario:req.query.horario,
-    direccion:req.query.direccion_c,
+    direccion_c:req.query.direccion_c,
     ///////////////////
     nombre:req.query.nombre,
     direccion:req.query.direccion,
     telefono:req.query.telefono,
     email:req.query.email
+  });
+
+  sol_comedor.save().then(function(us)//guardamos en la base de datos
+  {
+  console.log("guardamos tus datos");
+  },function(err)
+  {
+    if(err)
+    {
+      console.log(String(err));
+      console.log("no se pudo");
+
+    }
   }
 
-  console.log(JSON.stringify(req.query.nombre_c));
-  // sol_comedor.save().then(function(us)//guardamos en la base de datos
-  // {
-  //   console.log("Los datos se han guardado correctamente");
-  // },function(err)
-  //   {
-  //     if(err)
-  //     {
-  //       console.log(String(err));
-  //       console.log("Error al guardar los datos");
-  //     }
-  //   }
+  console.log(JSON.stringify(req.query));
+  var status=true;
+  res.header("Access-Control-Allow-Origin","*");
+  res.send({"status":status});
 });
 
 app.get("/solicitud_centro",function(req,res)
 {
-  var sol_centro= //new solicitud_centro(
+  var sol_centro=new solicitud_centro(
   {
     nombre_a:req.query.nombre_a,//nombre del comedor
     ubicacion:req.query.ubicacion,//coordenadas
@@ -76,24 +82,24 @@ app.get("/solicitud_centro",function(req,res)
     direccion:req.query.direccion,
     telefono:req.query.telefono,
     email:req.query.email
-  }
+  };
 
   console.log(JSON.stringify(req.query));
   var status=true;
   res.header("Access-Control-Allow-Origin","*");
   res.send({"status":status});
 
-  // sol_centro.save().then(function(us)//guardamos en la base de datos
-  // {
-  //   console.log("Los datos se han guardado correctamente");
-  // },function(err)
-  //   {
-  //     if(err)
-  //     {
-  //       console.log(String(err));
-  //       console.log("Error al guardar los datos");
-  //     }
-  //   }
+  sol_centro.save().then(function(us)//guardamos en la base de datos
+  {
+    console.log("Los datos se han guardado correctamente");
+  },function(err)
+    {
+      if(err)
+      {
+        console.log(String(err));
+        console.log("Error al guardar los datos");
+      }
+    }
 });
 
 app.get("/solicitud_voluntario",function(req,res)
@@ -103,20 +109,25 @@ app.get("/solicitud_voluntario",function(req,res)
     email:req.query.email,
     nombre:req.query.nombre,
     direccion:req.query.direccion,
-    telefono:req.telefono.telefono
+    telefono:req.query.telefono,
+    tipo:req.query.tipo
   });
-  console.log(req.query.nombre);
-  // sol_voluntario.save().then(function(us)//guardamos en la base de datos
-  // {
-  //   console.log("Los datos se han guardado correctamente");
-  // },function(err)
-  //   {
-  //     if(err)
-  //     {
-  //       console.log(String(err));
-  //       console.log("Error al guardar los datos");
-  //     }
-  //   }
+
+  console.log(JSON.stringify(req.query));
+  var status=true;
+  res.header("Access-Control-Allow-Origin","*");
+  res.send({"status":status});
+  sol_voluntario.save().then(function(us)//guardamos en la base de datos
+  {
+    console.log("Los datos se han guardado correctamente");
+  },function(err)
+    {
+      if(err)
+      {
+        console.log(String(err));
+        console.log("Error al guardar los datos");
+      }
+    }
 });
 
 

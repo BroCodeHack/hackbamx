@@ -1,5 +1,6 @@
 var mongoose=require("mongoose");
 var Schema=mongoose.Schema;
+mongoose.connect("mongodb://localhost/formulario");
 
 //hola///
 
@@ -13,4 +14,7 @@ email:{type:String,require:true}
 
 
 
-}); module.exports=comedor;
+});
+
+var solicitud_comedor=mongoose.model("solicitud_comedor",comedor);
+module.exports.solicitud_comedor=solicitud_comedor;//exportamos la tabla
