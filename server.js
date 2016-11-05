@@ -138,12 +138,11 @@ app.get("/solicitud_voluntario",function(req,res)
 				text+=cadena[a];
 			}
 		}
-		// dirige a login
 	});
-  var status=true;
+
+   var status=true;
   res.header("Access-Control-Allow-Origin","*");
   res.send({"status":status});
-
 
 });
 
