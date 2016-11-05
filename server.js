@@ -61,12 +61,7 @@ app.get("/solicitud_comedor",function(req,res)
       console.log("no se pudo");
 
     }
-  }
-
-  console.log(JSON.stringify(req.query));
-  var status=true;
-  res.header("Access-Control-Allow-Origin","*");
-  res.send({"status":status});
+  });
 });
 
 app.get("/solicitud_centro",function(req,res)
@@ -82,7 +77,7 @@ app.get("/solicitud_centro",function(req,res)
     direccion:req.query.direccion,
     telefono:req.query.telefono,
     email:req.query.email
-  };
+  });
 
   console.log(JSON.stringify(req.query));
   var status=true;
@@ -99,7 +94,7 @@ app.get("/solicitud_centro",function(req,res)
         console.log(String(err));
         console.log("Error al guardar los datos");
       }
-    }
+    });
 });
 
 app.get("/solicitud_voluntario",function(req,res)
@@ -127,7 +122,7 @@ app.get("/solicitud_voluntario",function(req,res)
         console.log(String(err));
         console.log("Error al guardar los datos");
       }
-    }
+    });
 });
 
 

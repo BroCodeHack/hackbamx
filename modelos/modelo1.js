@@ -3,10 +3,10 @@ var Schema=mongoose.Schema;
 mongoose.connect("mongodb://localhost/formulario");
 
 var voluntario= new Schema({
-  nombre:{type:String,require:true}
-  direccion:{type:String, require:true}
-  telefono:{type:String, require:true}
-  correo:{type:String, require:true}
+  nombre:{type:String,require:true},
+  direccion:{type:String, require:true},
+  telefono:{type:String, require:true},
+  correo:{type:String, require:true},
   tipo:{type:String,require:true}
   });
 
