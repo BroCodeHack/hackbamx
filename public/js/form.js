@@ -37,6 +37,22 @@ $(function () {
       		});
 			return false;
 		});
+	$("#send2").click(function () {
+		datos={
+			nombre_a: $("#nombre").val(),
+			direccion_a: $("#direccion").val(),
+			telefono: $("#telefono").val(),
+			email:    $("#email").val(),
+			email:    $("#tipo").val()
+
+		}
+		console.log(JSON.stringify(datos));
+		$.getJSON('http://10.49.174.244:3000/solicitud_voluntario', datos, function(data) {
+        	console.log(JSON.stringify(data));
+        	alert("se enviaron correctamente");
+      		});
+			return false;
+		});
 	
 
 });

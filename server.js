@@ -4,7 +4,8 @@ var io = require('socket.io');
 //******tablas*****
 //checar el nombre de la tabla y la ubicacion
 var solicitudvoluntario=require("./modelos/modelo1").solicitud_voluntario;
-
+var solicitudcomedor=require("./modelos/modelo1").solicitud_comedor;
+var solicitudcentro=require("./modelos/modelo1").solicitud_centro;
 
 
 //*******************+
@@ -98,7 +99,7 @@ app.get("/solicitud_centro",function(req,res)
 
 app.get("/solicitud_voluntario",function(req,res)
 {
-  var sol_voluntario= new solicitud_voluntario(
+  var sol_voluntario= new solicitudvoluntario(
   {
     email:req.query.email,
     nombre:req.query.nombre,
@@ -107,10 +108,6 @@ app.get("/solicitud_voluntario",function(req,res)
     tipo:req.query.tipo
   });
 
-  console.log(JSON.stringify(req.query));
-  var status=true;
-  res.header("Access-Control-Allow-Origin","*");
-  res.send({"status":status});
   sol_voluntario.save().then(function(us)//guardamos en la base de datos
   {
     console.log("Los datos se han guardado correctamente");
@@ -122,6 +119,32 @@ app.get("/solicitud_voluntario",function(req,res)
         console.log("Error al guardar los datos");
       }
     });
+
+  
+
+  solicitudvoluntario.find(function (err,doc) {
+      // busca en el modelo
+		var cadena= JSON.stringify(doc)﻿;
+		var text="";
+		for (var a =0; a<cadena.length;a++){
+
+			if (cadena[a]=="\""){
+				text+="\"\t";
+			}else if(cadena[a]==","){
+				text+=",\n";
+			}else if (cadena[a]=="}"){
+				text+="}\n";
+			}else{
+				text+=cadena[a];
+			}
+		}
+		// dirige a login
+	});
+  var status=true;
+  res.header("Access-Control-Allow-Origin","*");
+  res.send({"status":status});
+
+
 });
 
 

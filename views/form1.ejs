@@ -26,7 +26,7 @@
         padding: 0;
       }
       #map {
-      	height: 80vh;
+      	height: 75vh;
       }
     </style>
 </head><!--/head-->
@@ -103,27 +103,27 @@ map
 
 					<div class="col-sm-5">
 						<div id="contact-section">
-							<h3>Bienvenido Colaborador</h3>
+							<h2>Bienvenido Colaborador</h2>
 					    	<div class="status alert alert-success" style="display: none"></div>
 					    	<form id="main-contact-form" class="contact-form" name="contact-form" method="post">
 					            <div class="form-group">
-					                <input type="text" name="name" class="form-control" required="required" placeholder="Nombre Completo">
+					                <input type="text" id="nombre" class="form-control" required="required" placeholder="Nombre Completo">
 					            </div>
 
  								<div class="form-group">
-					                <input type="text" name="dir" class="form-control" required="required" placeholder="Dirección">
+					                <input type="text" id="direccion"  class="form-control" required="required" placeholder="Dirección">
 					            </div>
 
  								<div class="form-group">
-					                <input type="text" name="tel" class="form-control" required="required" placeholder="Teléfono">
+					                <input type="text" id="telefono"  class="form-control" required="required" placeholder="Teléfono">
 					            </div>
 
 					            <div class="form-group">
-					                <input type="email" name="email" class="form-control" required="required" placeholder="Email ">
+					                <input type="email" id="email"  class="form-control" required="required" placeholder="Email ">
 					            </div>
 
 					            <div class="form-group1">
-									<select width="50" name="tip" >
+									<select width="50" id="tipo"  >
 											<option value="">Donador</option>
 											<option value="">Repartidor</option>
 											<option value="">Expandir Comunidad</option>
@@ -131,7 +131,7 @@ map
 					            </div>  
 
 					            <div class="form-group">
-					                <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+					                <button type="submit" class="btn btn-primary pull-right" id="send2">Enviar</button>
 					            </div>
 
 					        </form>
@@ -141,10 +141,8 @@ map
 					    </div>
 					    
 					</div>
-					<div class="col-sm-7">
-						<br>
-						<br>
-						<br>
+					<div class="col-sm-5">
+						<h2 align="center">Ubicate en el mapa</h2>
 						<div class="img-responsive" id="map" align="center"></div>
 					</div>
 					 
