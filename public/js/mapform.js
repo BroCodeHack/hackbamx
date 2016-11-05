@@ -14,11 +14,14 @@ if (navigator.geolocation) {
 }});
 
 function openInfoWindow(markerpos){
+
   var markerLatLng=markerpos.getPosition();
+  $('#ubicacionlat').val(markerLatLng.lat());
+  $('#ubicacionlng').val(markerLatLng.lng());
   console.log(markerLatLng.lat());
   console.log(markerLatLng.lng());
   infoWindow.setContent([
-      '<p>Posición Propuesta</p>'
+      '<p style="color:black;">Posición Propuesta</p>'
     ].join(''));
     infoWindow.open(map,markerpos);
 }
@@ -44,10 +47,9 @@ function initMap(LatLng) {
         title: "Mi posición",
         animation: google.maps.Animation.DROP
         });
-      google.maps.event.addListener(markerpos, 'click', function() {openInfoWindow(markerpos);});  
-      google.maps.event.addDomListener(window,'resize',initialize);
-      google.maps.event.addDomListener(window,'load',initialize);
-
+      google.maps.event.addListener(markerpos, 'click', function() {
+        openInfoWindow(markerpos);
+      });  
 }
 
 

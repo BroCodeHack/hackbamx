@@ -63,13 +63,13 @@ h2 {
 **************************/
 
 .header-top {
-  display: block;
-  overflow: hidden;
+  display: block;/*block*/
+  overflow: hidden;/*hidden*/
   padding: 25px;
 }
 
 .main-nav {
-  position: absolute;
+  position: absolute;/*absolute*/
   width: 100%;
   z-index: 999;
 }
@@ -102,10 +102,10 @@ h2 {
 }
 
 .navbar-brand {
-  background-color: #f0ad4e;/*#f0ad4e-----#1B7B98*/
+  background-color: #D34747;/*#f0ad4e-----#1B7B98*/
   height: 90px;
   margin-bottom: 20px;
-  position: relative;
+  position: relative;/*relative*/
   width: 297px;
 }
 
@@ -115,7 +115,7 @@ h2 {
 }
 
 .navbar-right {
-  background-color: #f0ad4e;/*#f0ad4e-----#1B7B98*/
+  background-color: #D34747;/*#f0ad4e-----#1B7B98*/
   padding:0 95px 0 0;
   opacity: .9
 }
@@ -138,7 +138,7 @@ h2 {
 
 
 .fixed-menu {
-  background-color: #f0ad4e;
+  background-color: #D34747;/*-----------------------------------*/
   position: fixed;
   top: 0;
 }
@@ -159,7 +159,7 @@ h2 {
   margin-top: 0;
   padding: 0;
   margin-bottom: 0;
-  width: 125px;
+  width: 125px;/*125*/
 }
 
 .fixed-menu .navbar-brand img {
@@ -256,7 +256,7 @@ h2 {
 
 #explore {
   background-color: #5d5d5d; /*5d5d5d5d*/
-  /*background-image: url("../images/mor2.jpg");*/
+  background-image: url("");
   background-position: center bottom;
   background-size: contain;
   background-repeat:no-repeat;
@@ -354,46 +354,12 @@ h2 {
   width: 1px;
 }
 
-.cart {
-  background-color: #b34534;  
-  position: absolute;
-  right:-200px;
-  top: 37%;
-  width:252px;
-   -webkit-transition: all 0.7s ease-in-out;
-  -moz-transition: all 0.7s ease-in-out;
-  -ms-transition: all 0.7s ease-in-out;
-  -o-transition: all 0.7s ease-in-out;
-  transition: all 0.7s ease-in-out;
-}
-
-.cart:hover {
-  right:0;
-}
-
-
-.cart a {
-  color: #FFFFFF;
-  display: block;
-  font-size: 24px;
-  text-transform: uppercase;
-}
-
-.cart a i {
-  font-size: 30px;  
-  padding: 20px 12px;
-  background-color: #A64030; 
-  margin-right: 3px;
-}
-
- 
-
  /*************************
 *******Event CSS******
 **************************/
 #event {
-  background-color: #5cb85c;/**/
-  /*background-image: url("../images/go.jpg");*/
+  background-color: #7DA924;/*VERDE*/
+  background-image: url("");
   background-position: 50% 0;
   background-size: contain;
   position: relative;
@@ -479,7 +445,7 @@ h2 {
 
 .about-content {
   width: 50%;
-   background-image: url("../images/about-bg.jpg");
+   background-image: url("");
   background-position: left bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -507,75 +473,6 @@ h2 {
 #about .btn-primary:hover {
   background-color: #126d55
 }
-
-
-
-/*************************
-******Twitter CSS****
-**************************/
-
-#twitter {
-  background-color: #ecedef;
-  background-image: url("../images/twitter-bg.jpg");
-  background-position: center bottom;
-  background-size: cover;
-  background-repeat:no-repeat;
-  position: relative;
-  padding: 95px 0 90px;
-  overflow: hidden;
-}
-
-.twit {
-  position: absolute;
-  left: 0;
-  top:-42%;
-}
-
-#twitter-feed .item {
-  text-align: center;
-}
-
-#twitter-feed .item img {
-  display: inline-block;
-  width: 78px;
-  height: 78px;
-  border-radius: 50%;
-  background-color: #c5c8ce;
-  padding: 5px;
-  margin-bottom: 30px;
-}
-
-#twitter-feed .item a, 
-#twitter-feed .item p { 
-  font-size: 24px;
-  font-weight: 300;
-  font-family: 'Yanone Kaffeesatz','sans-serif';
-}
-
-#twitter-feed .item p {
-  color: #3D3D3D;
-}
-
-#twitter-feed .item a {
-  color:#00c3ff;
-}
-
-.twitter-control-left, 
-.twitter-control-right {
-  position: absolute;
-  color: #00c3ff;
-  top: 59%;
-  font-size: 24px
-}
-
-.twitter-control-left {
-  left: 0;
-}
-
-.twitter-control-right {
-  right:0;
-} 
-
 
 
 /*************************
@@ -658,7 +555,7 @@ h2 {
 
 .contact-section {
   background-color: #f7ab24;
-  background-image: url("../");/*contacto(final}9*/
+  background-image: url("");/*contacto(final}9*/
   background-position:60% 0;
   background-size:contain;
   background-repeat:no-repeat;  
@@ -740,7 +637,7 @@ h2 {
 
 #footer {
   background-color: #212121;
-  /*background-image: url("../images/band.jpg");
+  background-image: url("../images/band.jpg");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -759,12 +656,13 @@ h2 {
 
 /*COLABORADORES-----------------------------*/
 #event1 {
-  background-color: #d9534f;/**/
-/*  background-image: url("../images/contact-bg");
-*/  background-position: 50% 0;
+  background-color: #2B7E7E;/*AZULLLLLLLLLLLLLLLLLLLL*/
+  background-image: url("");
+  background-position: 50% 0;
   background-size: contain;
   position: relative;
   background-repeat: no-repeat;
+  size: 20;
 }
 
 ./*bamx {
@@ -781,6 +679,7 @@ h2 {
   margin-bottom: 40px;
   margin-top: 70px;
   text-transform: uppercase;
+
 }
 
 .single-event {
@@ -825,4 +724,25 @@ h2 {
 
 .form-group1{
   color: black;
+}
+
+.vent{
+
+  border: 1px solid #CCC;
+  background-color: #E0E0E0;
+  padding: .5em;
+  overflow: hidden;
+}
+
+
+
+
+#explore1 {
+  background-color: #5d5d5d; /*5d5d5d5d*/
+  background-position: center bottom;
+  background-size: contain;
+  background-repeat:no-repeat;
+  position: relative;
+  overflow: hidden;
+  padding: 130px 0 100px;
 }
