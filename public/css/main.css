@@ -102,7 +102,7 @@ h2 {
 }
 
 .navbar-brand {
-  background-color: #1B7B98;
+  background-color: #f0ad4e;/*#f0ad4e-----#1B7B98*/
   height: 90px;
   margin-bottom: 20px;
   position: relative;
@@ -115,7 +115,7 @@ h2 {
 }
 
 .navbar-right {
-  background-color: #1B7B98;
+  background-color: #f0ad4e;/*#f0ad4e-----#1B7B98*/
   padding:0 95px 0 0;
   opacity: .9
 }
@@ -123,7 +123,7 @@ h2 {
 .navbar-right li a {
   padding: 35px 21px;
   font-size: 22px;
-  color: #fff;
+  color: #fff;/*#fff*/
   text-transform: uppercase;
   font-family: 'Yanone Kaffeesatz', 'sans-serif';
   font-weight: 300;
@@ -132,13 +132,13 @@ h2 {
 .navbar-right li a:hover, 
 .navbar-right li a:focus,  
 .navbar-right .active a {
-  background-color: #fff;
+  background-color: #fff;/*#fff*/
   color: #16728f
 }
 
 
 .fixed-menu {
-  background-color: #1B7B98;
+  background-color: #f0ad4e;
   position: fixed;
   top: 0;
 }
@@ -240,8 +240,8 @@ h2 {
 
 #main-slider 
 .carousel-indicators li {
-  background-color:#1B7B98;
-  border: 1px solid #1B7B98;
+  background-color:#f0ad4e;/*#1B7B98 AMBOS*/
+  border: 1px solid #f0ad4e;
 }
 
 #main-slider 
@@ -256,7 +256,7 @@ h2 {
 
 #explore {
   background-color: #5d5d5d; /*5d5d5d5d*/
-  background-image: url("../images/mor2.jpg");
+  /*background-image: url("../images/mor2.jpg");*/
   background-position: center bottom;
   background-size: contain;
   background-repeat:no-repeat;
@@ -392,8 +392,8 @@ h2 {
 *******Event CSS******
 **************************/
 #event {
-  background-color: #33888F;
-  background-image: url("../images/go.jpg");
+  background-color: #5cb85c;/**/
+  /*background-image: url("../images/go.jpg");*/
   background-position: 50% 0;
   background-size: contain;
   position: relative;
@@ -740,7 +740,7 @@ h2 {
 
 #footer {
   background-color: #212121;
-  background-image: url("../images/footer-bg.jpg");
+  /*background-image: url("../images/band.jpg");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -754,7 +754,75 @@ h2 {
 }
 
 #footer a:hover {
-  color:#1B7B98
+  color:#1B7B98/*#f0ad4e------------------------#1B7B98*/
+}
+
+/*COLABORADORES-----------------------------*/
+#event1 {
+  background-color: #d9534f;/**/
+  background-image: url("../images/contact-bg");
+  background-position: 50% 0;
+  background-size: contain;
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+./*bamx {
+  position: absolute;
+  right:0;
+  top: 0
+}*/
+
+
+#event1 h2 {
+  color: #FFFFFF;
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 40px;
+  margin-top: 70px;
+  text-transform: uppercase;
+}
+
+.single-event {
+  margin-bottom: 70px;
+}
+
+.single-event h4 {
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 26px;
+  margin-top: 25px;
+  text-transform: uppercase;
 }
 
 
+.single-event h5 {
+  font-size: 18px;
+  font-weight: 100;
+  display: block;
+}
+
+#event-carousel {
+  position: relative;
+}
+
+.even-control-left, 
+.even-control-right {
+  position: absolute;
+  font-size: 24px;
+  color: #fff;
+  top: 0;
+}
+
+.even-control-left {
+  right: 3%
+} 
+
+.even-control-right {
+  right: 0;
+}
+
+.form-group1{
+  color: black;
+}
