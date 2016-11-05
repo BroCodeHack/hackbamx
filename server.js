@@ -132,7 +132,11 @@ app.get("/solicitud_voluntario",function(req,res)
 
 
 app.get('/', function(req, res){
-  res.render('index', { title: 'Morealert' });
+  res.render('index');
+});
+
+app.get('/form', function(req, res){
+  res.render('form1');
 });
 
 io.set('log level', 1);
