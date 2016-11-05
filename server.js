@@ -99,6 +99,15 @@ app.get("/solicitud_centro",function(req,res)
 
 app.get("/solicitud_voluntario",function(req,res)
 {
+	var sol_voluntari= 
+  {
+    email:req.query.email,
+    nombre:req.query.nombre,
+    direccion:req.query.direccion,
+    telefono:req.query.telefono,
+    tipo:req.query.tipo
+  }
+
   var sol_voluntario= new solicitudvoluntario(
   {
     email:req.query.email,
@@ -138,9 +147,10 @@ app.get("/solicitud_voluntario",function(req,res)
 				text+=cadena[a];
 			}
 		}
+		console.log(text);
 	});
 
-   var status=true;
+  var status=true;
   res.header("Access-Control-Allow-Origin","*");
   res.send({"status":status});
 
@@ -153,6 +163,14 @@ app.get('/', function(req, res){
 
 app.get('/form', function(req, res){
   res.render('form1');
+});
+
+app.get('/form2', function(req, res){
+  res.render('comedores');
+});
+
+app.get('/123456', function(req, res){
+  res.render('admin');
 });
 
 io.set('log level', 1);
