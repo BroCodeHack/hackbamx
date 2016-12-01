@@ -1,4 +1,56 @@
 $(function () {
+	var socket = io.connect('http://localhost:3000',{'forceNew':true});
+
+	socket.on('messages',function (data) {
+	console.log(data.length);
+	$("#SoliciC").html("");
+		for (var a = 0; a <= data.length-1;a++ ) {
+			if (data[a].tipo == "1") {
+				$("#SoliciC").append(`
+				<div class="panel panel-primary">
+				  <div class="panel-body">
+				    <Strong>Solicitud de centro de acopio: ${data[a].nombre_c}</Strong> 
+				  </div>
+				  <div class="panel-footer">
+				  Coordenadas <br>
+				  latitud: ${data[a].latitud}, longitud: ${data[a].longitud} <br>
+				  Horario de Atención<br>
+				  inicio: ${data[a].inicio}  fin: ${data[a].fin}<br>
+				  Datos del responsable<br>
+				  nombre: ${data[a].nombre}<br>
+				  direccion: ${data[a].direccion}<br>
+				  telefono: ${data[a].telefono}<br>
+				  email: ${data[a].email}
+				  </div>
+				</div>
+				`);
+			}else{
+				$("#SoliciC").append(`
+				<div class="panel panel-primary">
+				  <div class="panel-body">
+				    <Strong>Solicitud de comedor: ${data[a].nombre_c}</Strong> 
+				  </div>
+				  <div class="panel-footer">
+				  Coordenadas <br>
+				  latitud: ${data[a].latitud}, longitud: ${data[a].longitud} <br>
+				  Horario de Atención<br>
+				  inicio: ${data[a].inicio}  fin: ${data[a].fin}<br>
+				  Datos del responsable<br>
+				  nombre: ${data[a].nombre}<br>
+				  direccion: ${data[a].direccion}<br>
+				  telefono: ${data[a].telefono}<br>
+				  email: ${data[a].email}
+				  </div>
+				</div>
+				`);
+			}
+			
+
+
+		
+		}
+	});
+
 	$("#send").click(function () {
 		datos={
 			nombre_c: $("#nombre_c").val(),
@@ -27,7 +79,7 @@ $(function () {
 			$("#email").val("");
 
 		console.log(JSON.stringify(datos));
-		$.getJSON('http://10.49.174.244:3000/solicitud_c', datos, function(data) {
+		$.getJSON('http://localhost:3000/solicitud_c', datos, function(data) {
         	console.log(JSON.stringify(data));
         	alert("se enviaron correctamente");
       		});
@@ -56,10 +108,14 @@ $(function () {
 			$("#email").val("");
 
 		console.log(JSON.stringify(datos));
-		$.getJSON('http://10.49.174.244:3000/solicitud_comedor', datos, function(data) {
+		$.getJSON('http://localhost:3000/solicitud_comedor', datos, function(data) {
         	console.log(JSON.stringify(data));
         	alert("se enviaron correctamente");
       		});
+		var payload = {
+			id : 1
+		}
+		socket.emit('newcomedor',payload);
 			return false;
 		});
 	$("#send2").click(function () {
@@ -78,7 +134,7 @@ $(function () {
 			$("#tipo").val("");
 			
 		console.log(JSON.stringify(datos));
-		$.getJSON('http://10.49.174.244:3000/solicitud_voluntario', datos, function(data) {
+		$.getJSON('http://localhost:3000/solicitud_voluntario', datos, function(data) {
         	console.log(JSON.stringify(data));
         	alert("se enviaron correctamente");
       		});

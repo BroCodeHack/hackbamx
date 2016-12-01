@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAA1gybajGje1CxFHgzphPqhBTkhzudNWd_u13Cffh29fB-9TXQzxQVh6gduUCW9NeYlGOi-AFsvIHQpg"
+      type="text/javascript"></script>
+
+<script type="text/javascript">
+
+
+
+function load(){
+
+  if (GBrowserIsCompatible()) {
+    var map = new google.maps.Map(document.getElementById("mapa"));
+    map.setCenter(new GLatLng(18.8456651,-99.228679),13);////////POSICION EN DONDE APARECEREMOS
+                       //CON EXTENCION//////
+  var defaultPos = new google.maps.LatLng(19.289168, -99.653440);
+
+  panel_ruta = document.getElementById("direcciones");
+	ruta = new GDirections(map, panel_ruta);
+	ruta.load("from: 18.857704, -99.230131 to:18.850305, -98.937989 ",{locale: 'es_ES'}
+  ); 
+  panel_ruta2 = document.getElementById("direcciones2");
+  ruta2 = new GDirections(map, panel_ruta2);
+  ruta2.load("from: 18.946093, -99.233825 to:18.83318044, -98.0045413",{locale:'es_ES'}); /////RUTA INICIO DESTINO/////
+  var marker = new google.maps.Marker({
+            map: map,
+            position: defaultPos,
+            title: 'Hello World!'
+
+          });
+  }
+
+}
+
+
+</script>
+
+ <style type="text/css"></style>
+</head>
+<body onload="load();" onunload="GUnload();">
+
+<h1>Direcciones</h1>
+
+
+  <tr>
+    <th>Mapa</th>
+  </tr>
+  <tr>
+    <td valign="top"><div id="mapa" style="width: 310px; height: 400px"></div></td>
+  </tr>
+
+
+<hr/>
+
+
+</body>
+</html>

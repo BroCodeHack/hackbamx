@@ -6,28 +6,22 @@ var io=require("socket.io")(server);//servidor de sockets
 //******tablas*****
 //checar el nombre de la tabla y la ubicacion
 var solicitudvoluntario=require("./modelos/modelo1").solicitud_voluntario;
-
 var solicitud_c=require("./modelos/modelo1").solicitud_centro;
 
 app.set('view engine', 'ejs');
 app.use("/estatico",express.static('public'));
-
-var misocket; //socket = misocket.so
-
-function sock(so)
-{
-  this.so=so;
-}
-
-io.on("connection",function(socket)//cuando reciba el mensaje connection del navegador ejecutara la funcion
-{
+var solcentro = [{}];
+io.on("connection",function(socket){
+  
+  solicitud_c.find(function (err,doc) {
+    solcentro =doc;
+  });
   console.log("Alguien se ha conectado con sockets");
-  socket.emit("messages",messages);
+  console.log(JSON.stringify(solcentro));
+  socket.emit("messages",solcentro);
 
-  socket.on("new-message", function(data)//funcion que se ejecuta al recibir el evento new-message
-  {
-    messages.push(data);//lo guardamos en el arreglo
-    io.sockets.emit("messages",messages);//se utiliza todo el servidor para envarle a todos los sockets el array actualizado
+  socket.on("newcomedor", function(data){
+    io.sockets.emit("messages",solcentro);//se utiliza todo el servidor para envarle a todos los sockets el array actualizado
    });
 });
 
@@ -35,8 +29,7 @@ io.on("connection",function(socket)//cuando reciba el mensaje connection del nav
 
 app.get("/solicitud_c",function(req,res)
 {
-  var sol_c=new solicitud_c(
-  {
+  var sol_c=new solicitud_c({
     nombre_c:req.query.nombre_c,//nombre del comedor
     tipo:req.query.tipo,//centro=1/comedor=2
     latitud:req.query.latitud,//coordenadas
@@ -51,13 +44,10 @@ app.get("/solicitud_c",function(req,res)
     estado:false
   });
   console.log(JSON.stringify(req.query));
-  sol_c.save().then(function(us)//guardamos en la base de datos
-  {
+  sol_c.save().then(function(us){
   console.log("guardamos tus datos");
-  },function(err)
-  {
-    if(err)
-    {
+  },function(err){
+    if(err){
       console.log(String(err));
       console.log("No se pudieron guardar tus datos");
     }
@@ -86,10 +76,8 @@ app.get("/solicitud_c",function(req,res)
  res.send({"ss":status});
 });
 
-app.get("/solicitud_centro",function(req,res)
-{
-  var sol_centro=new solicitud_centro(
-  {
+app.get("/solicitud_centro",function(req,res){
+  var sol_centro=new solicitud_centro({
     nombre_a:req.query.nombre_a,//nombre del comedor
     ubicacion:req.query.ubicacion,//coordenadas
     horario:req.query.horario,
@@ -110,20 +98,16 @@ app.get("/solicitud_centro",function(req,res)
   sol_centro.save().then(function(us)//guardamos en la base de datos
   {
     console.log("Los datos se han guardado correctamente");
-  },function(err)
-    {
-      if(err)
-      {
+  },function(err){
+      if(err){
         console.log(String(err));
         console.log("Error al guardar los datos");
       }
     });
 });
 
-app.get("/solicitud_voluntario",function(req,res)
-{
-	var sol_voluntari= 
-  {
+app.get("/solicitud_voluntario",function(req,res){
+	var sol_voluntari={
     email:req.query.email,
     nombre:req.query.nombre,
     direccion:req.query.direccion,
@@ -131,8 +115,7 @@ app.get("/solicitud_voluntario",function(req,res)
     tipo:req.query.tipo
   }
 
-  var sol_voluntario= new solicitudvoluntario(
-  {
+  var sol_voluntario= new solicitudvoluntario({
     nombre:req.query.nombre,
     direccion:req.query.direccion,
     telefono:req.query.telefono,
@@ -141,13 +124,10 @@ app.get("/solicitud_voluntario",function(req,res)
     estado:false
   });
 
-  sol_voluntario.save().then(function(us)//guardamos en la base de datos
-  {
+  sol_voluntario.save().then(function(us){
     console.log("Los datos se han guardado correctamente");
-  },function(err)
-    {
-      if(err)
-      {
+  },function(err){
+      if(err){
         console.log(String(err));
         console.log("Error al guardar los datos");
       }
@@ -171,11 +151,8 @@ app.get("/solicitud_voluntario",function(req,res)
 				text+=cadena[a];
 			}
 		}
-<<<<<<< HEAD
 		console.log(text);
-=======
-    console.log(text);
->>>>>>> eaf397ed53bfe5fc858baea1e5e6f35f469520c4
+
 	});
 
   var status=true;
@@ -193,57 +170,47 @@ app.get('/form', function(req, res){
   res.render('form1');
 });
 
-<<<<<<< HEAD
 app.get('/form2', function(req, res){
   res.render('comedores');
 });
-
 app.get('/123456', function(req, res){
   res.render('admin');
 });
 
-io.set('log level', 1);
-=======
-app.get("/rutas",function(req,res)
-{
-  var ruta =
-  {
+app.get('/map', function(req, res){
+  res.render('mapa1');
+});
+
+app.get("/rutas",function(req,res){
+  var ruta ={
     inicio:{nombre_c:"cuautla",latitud:"12.927371",longitud:"12.1827",tipo:"1",},
     fin:{nombre_c:"amayuca",latitud:"12.927371",longitud:"12.1827",tipo:"2"}
   }
->>>>>>> eaf397ed53bfe5fc858baea1e5e6f35f469520c4
+
 
   //////////////////////
   //hacer la consulta de todas las rutas
-  solicitud_c.find({"estado":false},{"nombre_c":1,"tipo":1,"latitud":1,"longitud":1},function(err,doc)
-  {
+  solicitud_c.find({"estado":false},{"nombre_c":1,"tipo":1,"latitud":1,"longitud":1},function(err,doc){
     res.header("Access-Control-Allow-Origin","*");
     res.send(doc);
   });
 });
 
-app.get("/admin_solicitudes_centros",function(req,res)//solicitudes de comedores
-{
-  solicitud_c.find({"estado":false,"tipo":"1"},{"nombre_c":1,"tipo":1,"latitud":1,"longitud":1},function(err,doc)
-  {
+app.get("/admin_solicitudes_centros",function(req,res){
+  solicitud_c.find({"estado":false,"tipo":"1"},{"nombre_c":1,"tipo":1,"latitud":1,"longitud":1},function(err,doc){
     res.header("Access-Control-Allow-Origin","*");
     res.send(doc);
   });
 });
 
-app.get("/admin_solicitudes_comedores",function(req,res)//solicitudes de centros de acopio
-{
-  solicitud_c.find({"estado":false,"tipo":"2"},{"nombre_c":1,"tipo":1,"latitud":1,"longitud":1},function(err,doc)
-  {
+app.get("/admin_solicitudes_comedores",function(req,res){
+  solicitud_c.find({"estado":false,"tipo":"2"},{"nombre_c":1,"tipo":1,"latitud":1,"longitud":1},function(err,doc){
     res.header("Access-Control-Allow-Origin","*");
     res.send(doc);
   });
 });
 
-app.get("/respuestas",function()
-{
-    // id:req.query.id //obtenemos el id del boton que eliga
-    // tipo:req.query.tipo
+app.get("/respuestas",function(){
     solicitud_c.remove({},{});
 });
 

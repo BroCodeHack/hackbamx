@@ -1,75 +1,170 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>MorBank</title>
 
-<html lang="es">
-	<head>
-		<title>Administrador</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-		<link href="/estatico/css/bootstrap.min.css" rel="stylesheet">
-	    <link href="/estatico/css/font-awesome.min.css" rel="stylesheet">
-		<link href="/estatico/css/main.css" rel="stylesheet">
-		<link href="/estatico/css/animate.css" rel="stylesheet">	
-		<link href="/estatico/css/responsive.css" rel="stylesheet">
-		<link href="bootstrap-flex.min.css" rel="stylesheet">
-		<link rel="shortcut icon" href="images/ico/apple.png">  
-		<link href="/estatico/css/stilex.css">
-	</head>
+    <link href="/estatico/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/estatico/css/bootstrap-combobox.css" rel="stylesheet">
+    <link href="/estatico/css/freelancer.min.css" rel="stylesheet">
+    <link href="/estatico/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src='/estatico/js/jquery-1.12.3.min.js'></script>
+    <script type="text/javascript" src='/estatico/js/bootstrap-combobox.js'></script>
+    <script type="text/javascript" src='/estatico/js/push.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVFkkhjKJsK4qS1MM0YkH5B0xx9DlLBYM&callback=initMap"
+        async defer></script>
+    <script type="text/javascript" src='/estatico/js/mapadmin.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src ="/estatico/js/form.js"></script>
+    <style type="text/css">
+       html, body {
+        height: 50%;
+        margin: 0;             
+        padding: 0;
+      }
+      #map {
+        height: 75vh;
+      }
+    </style>
+</head>
 
-	<body bgcolor="#5d5d5d">
+<body id="page-top" class="index">
 
-		<nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse"
-            data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Desplegar navegación</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Mapas</a></li>
-      <li><a href="#">Solicitudes</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          Comedor <b class="caret"></b>
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">MorBank</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Solicitudes</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#mapas">Mapa</a>
+                    </li> 
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h4>Solicitudes Comedor</h4>
+                    <hr class="star-primary">
+                </div>
+                <div class="col-lg-12 " id="SoliciC" align="left">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mapas">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h4>En el mapa</h4>
+                    <hr class="star-primary">
+                </div>
+                <div class="col-lg-12 " id="map" align="left">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above" id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Materia:</h3>
+                        <p>
+                            
+                            <br>
+                            Programación Multiparadigmas
+                        </p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Tecnologico Nacional de Mexico</h3>
+                        <p>
+                            Instituto Tecnologico de Cuautla 
+                        </p>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://www.facebook.com/ITCuautlaOficial/?fref=ts" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/u/0/102862354387770266075" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/itcuautlaedumx" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                           
+                        </ul>
+                        
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Equipo</h3>
+                        <p>
+                            Aldana Yañez Isai Suriel
+                            <br>    
+                            Lopez Gil Yolanda Arisbey
+                            <br> 
+                            Torres Estrada Daniel
+                                
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        PyDF Creator &copy; 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
         </a>
-        <ul class="dropdown-menu">
-          <li><a href="#panel panel-default">Solicitudes</a></li>
+    </div>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/estatico/vendor/bootstrap/js/bootstrap.min.js"></script>
 
+    <script src="/estatico/js/freelancer.min.js"></script>
 
+</body>
 
-		
-
-          <li><a href="#">Centros</a></li>
-          <li><a href="#">Acción #3</a></li>
-          <li class="divider">jjj</li>
-          <li><a href="#">Acción #4</a></li>
-          <li class="divider">jjjjj</li>
-          <li><a href="#">Acción #5</a></li>
-        </ul>
-      </li>
-    </ul>
-   </div>
-
-
-
-					<div class="panel panel-default">
-					  <div class="panel-heading">Panel</div>
-					  <div class="panel-body">
-					    Mas Panel
-					  </div>
-					</div>
-
-					<div class="panel panel-default">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Panel</h3>
-					  </div>
-					  <div class="panel-body">
-					    Panel del Panel
-					  </div>
-					</div>		
-
-
-
-	</body>
 </html>
