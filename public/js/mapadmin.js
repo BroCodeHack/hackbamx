@@ -36,7 +36,8 @@ function initMap(LatLng) {
 //markers    
 
       $.getJSON('http://localhost:3000/rutas', {}, function(data) {
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
+        var markers = [];
         $("#datos").val(JSON.stringify(data).replace("\"", "").replace("\"", ""));
 
           for (a in data) {
@@ -44,27 +45,29 @@ function initMap(LatLng) {
               lat: parseFloat(data[a].latitud),
               lng: parseFloat(data[a].longitud)
             };
-    
-            var marker = new google.maps.Marker({
+            var marker =  new google.maps.Marker({
               map: map,
               position: myLatLng,
-              title: 'Hello World!'
+              title: data[a].nombre_c
             });
+            
+
             if (data[a].tipo=='1'){
-            marker.setIcon('/estatico/images/ico/apple.png');
+            marker.setIcon('/estatico/images/ico/central.png');
             }
             else if (data[a].tipo=='2'){
-            marker.setIcon('/estatico/images/ico/globe.png');
+            marker.setIcon('/estatico/images/ico/comedor.png');
             }
             else if (data[a].tipo=='3'){
-              marker.setIcon('icons/truck.png');
+            marker.setIcon('icons/truck.png');
             }
             else if (data[a].tipo=='4'){
-              marker.setIcon('icons/house.png');
+            marker.setIcon('icons/house.png');
             }
             else if (data[a].tipo=='5'){
-              marker.setIcon('icons/super.png');
+            marker.setIcon('icons/super.png');
             }
+            markers.push(marker);
         }
       });
 }

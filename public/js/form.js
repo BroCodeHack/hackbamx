@@ -2,7 +2,8 @@ $(function () {
 	var socket = io.connect('http://localhost:3000',{'forceNew':true});
 
 	socket.on('messages',function (data) {
-	console.log(data.length);
+	console.log(JSON.stringify(data));
+
 	$("#SoliciC").html("");
 		for (var a = 0; a <= data.length-1;a++ ) {
 			if (data[a].tipo == "1") {
@@ -78,11 +79,24 @@ $(function () {
 			$("#telefono").val("");
 			$("#email").val("");
 
-		console.log(JSON.stringify(datos));
+		//console.log(JSON.stringify(datos));
 		$.getJSON('http://localhost:3000/solicitud_c', datos, function(data) {
-        	console.log(JSON.stringify(data));
-        	alert("se enviaron correctamente");
-      		});
+        	//console.log(JSON.stringify(data));
+        	Push.create("Atención", {
+                body: "Datos enviados correctamente",
+                icon: '/estatico/img/ok-xxl.png',
+                timeout: 4000,
+                onClick: function () {
+                    window.focus();
+                    this.close();
+                }
+            });
+            
+      	});
+	      	var payload = {
+				id : 1
+			}
+			socket.emit('newcomedor',payload);
 			return false;
 		});
 	$("#send1").click(function () {
@@ -107,15 +121,12 @@ $(function () {
 			$("#telefono").val("");
 			$("#email").val("");
 
-		console.log(JSON.stringify(datos));
+		//console.log(JSON.stringify(datos));
 		$.getJSON('http://localhost:3000/solicitud_comedor', datos, function(data) {
-        	console.log(JSON.stringify(data));
+        	//console.log(JSON.stringify(data));
         	alert("se enviaron correctamente");
       		});
-		var payload = {
-			id : 1
-		}
-		socket.emit('newcomedor',payload);
+		
 			return false;
 		});
 	$("#send2").click(function () {
@@ -133,9 +144,9 @@ $(function () {
 			$("#email").val("");
 			$("#tipo").val("");
 			
-		console.log(JSON.stringify(datos));
+		//console.log(JSON.stringify(datos));
 		$.getJSON('http://localhost:3000/solicitud_voluntario', datos, function(data) {
-        	console.log(JSON.stringify(data));
+        	//console.log(JSON.stringify(data));
         	alert("se enviaron correctamente");
       		});
 			return false;

@@ -11,16 +11,20 @@ var solicitud_c=require("./modelos/modelo1").solicitud_centro;
 app.set('view engine', 'ejs');
 app.use("/estatico",express.static('public'));
 var solcentro = [{}];
-io.on("connection",function(socket){
-  
+
+
+io.on("connection",function(socket){  
   solicitud_c.find(function (err,doc) {
     solcentro =doc;
   });
-  console.log("Alguien se ha conectado con sockets");
-  console.log(JSON.stringify(solcentro));
+  //console.log("Alguien se ha conectado con sockets");
   socket.emit("messages",solcentro);
 
   socket.on("newcomedor", function(data){
+    //console.log("Nuevo comedor");
+    solicitud_c.find(function (err,doc) {
+      solcentro =doc;
+    });
     io.sockets.emit("messages",solcentro);//se utiliza todo el servidor para envarle a todos los sockets el array actualizado
    });
 });
@@ -43,13 +47,12 @@ app.get("/solicitud_c",function(req,res)
     email:req.query.email,//no requerido
     estado:false
   });
-  console.log(JSON.stringify(req.query));
   sol_c.save().then(function(us){
-  console.log("guardamos tus datos");
+  //console.log("guardamos tus datos");
   },function(err){
     if(err){
-      console.log(String(err));
-      console.log("No se pudieron guardar tus datos");
+      //console.log(String(err));
+      //console.log("No se pudieron guardar tus datos");
     }
   });
 
@@ -69,7 +72,7 @@ app.get("/solicitud_c",function(req,res)
 				text+=cadena[a];
 			}
 		}
-    console.log(text);
+    //console.log(text);
 	});
   var status=true;
  res.header("Access-Control-Allow-Origin","*");
@@ -90,18 +93,18 @@ app.get("/solicitud_centro",function(req,res){
     estado:false
   });
 
-  console.log(JSON.stringify(req.query));
+  //console.log(JSON.stringify(req.query));
   var status=true;
   res.header("Access-Control-Allow-Origin","*");
   res.send({"status":status});
 
   sol_centro.save().then(function(us)//guardamos en la base de datos
   {
-    console.log("Los datos se han guardado correctamente");
+    //console.log("Los datos se han guardado correctamente");
   },function(err){
       if(err){
-        console.log(String(err));
-        console.log("Error al guardar los datos");
+        //console.log(String(err));
+        //console.log("Error al guardar los datos");
       }
     });
 });
@@ -125,11 +128,11 @@ app.get("/solicitud_voluntario",function(req,res){
   });
 
   sol_voluntario.save().then(function(us){
-    console.log("Los datos se han guardado correctamente");
+    //console.log("Los datos se han guardado correctamente");
   },function(err){
       if(err){
-        console.log(String(err));
-        console.log("Error al guardar los datos");
+        //console.log(String(err));
+        //console.log("Error al guardar los datos");
       }
     });
 
@@ -151,7 +154,7 @@ app.get("/solicitud_voluntario",function(req,res){
 				text+=cadena[a];
 			}
 		}
-		console.log(text);
+		//console.log(text);
 
 	});
 

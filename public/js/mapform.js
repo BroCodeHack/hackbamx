@@ -24,7 +24,7 @@ function openInfoWindow(markerpos){
       '<p style="color:black;">Posición Propuesta</p>'
     ].join(''));
     infoWindow.open(map,markerpos);
-}
+  }
 
 
 function initMap(LatLng) {
@@ -47,6 +47,7 @@ function initMap(LatLng) {
         title: "Mi posición",
         animation: google.maps.Animation.DROP
         });
+      
       google.maps.event.addListener(markerpos, 'click', function() {
         openInfoWindow(markerpos);
       });  
